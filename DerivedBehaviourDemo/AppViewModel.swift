@@ -8,6 +8,6 @@
 import Foundation
 
 class AppViewModel: ObservableObject {
-  @Published var counter: Int = 0
-  @Published var favorites: Set<Int> = []
+  @Published var counter = CounterViewModel()
+  @Published var favorites = FavoritesViewModel()
 }

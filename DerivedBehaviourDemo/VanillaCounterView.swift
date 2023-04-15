@@ -7,8 +7,13 @@
 
 import SwiftUI
 
+class CounterViewModel: ObservableObject {
+  @Published var counter: Int = 0
+  @Published var favorites: Set<Int> = []
+}
+
 struct VanillaCounterView: View {
-  @ObservedObject var viewModel: AppViewModel
+  @ObservedObject var viewModel: CounterViewModel
 
   var body: some View {
     VStack {
@@ -58,7 +63,7 @@ struct VanillaCounterView: View {
 struct VanillaCounterView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {      
-      VanillaCounterView(viewModel: AppViewModel())
+      VanillaCounterView(viewModel: CounterViewModel())
     }
   }
 }

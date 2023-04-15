@@ -7,8 +7,12 @@
 
 import SwiftUI
 
+class FavoritesViewModel: ObservableObject {
+  @Published var favorites: Set<Int> = []
+}
+
 struct VanillaFavoritesView: View {
-  @ObservedObject var viewModel: AppViewModel
+  @ObservedObject var viewModel: FavoritesViewModel
   
   var body: some View {
     List {
@@ -33,7 +37,7 @@ struct VanillaFavoritesView: View {
 struct VanillaFavoritesView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      VanillaFavoritesView(viewModel: AppViewModel())
+      VanillaFavoritesView(viewModel: FavoritesViewModel())
     }
   }
 }

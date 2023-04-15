@@ -11,7 +11,8 @@ import SwiftUI
 struct DerivedBehaviourDemoApp: App {
   var body: some Scene {
     WindowGroup {
-      VanillaContentView(viewModel: AppViewModel())
+      let appViewModel = AppViewModel()
+      VanillaContentView(viewModel: appViewModel)
     }
   }
 }
