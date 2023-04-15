@@ -101,10 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				917CBB0C29EA72C10090F892 /* DerivedBehaviourDemoApp.swift */,
-				917CBB3A29EAAD500090F892 /* AppViewModel.swift */,
-				917CBB0E29EA72C10090F892 /* VanillaContentView.swift */,
-				917CBB3629EA73150090F892 /* VanillaCounterView.swift */,
-				917CBB3829EA73240090F892 /* VanillaFavoritesView.swift */,
+				917CBB3D29EADDD90090F892 /* TCA */,
+				917CBB3C29EADDB90090F892 /* VanillaSwiftUI */,
 				917CBB1029EA72C20090F892 /* Assets.xcassets */,
 				917CBB1229EA72C20090F892 /* Preview Content */,
 			);
@@ -134,6 +132,24 @@
 				917CBB2929EA72C20090F892 /* DerivedBehaviourDemoUITestsLaunchTests.swift */,
 			);
 			path = DerivedBehaviourDemoUITests;
+			sourceTree = "<group>";
+		};
+		917CBB3C29EADDB90090F892 /* VanillaSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				917CBB3A29EAAD500090F892 /* AppViewModel.swift */,
+				917CBB0E29EA72C10090F892 /* VanillaContentView.swift */,
+				917CBB3629EA73150090F892 /* VanillaCounterView.swift */,
+				917CBB3829EA73240090F892 /* VanillaFavoritesView.swift */,
+			);
+			path = VanillaSwiftUI;
+			sourceTree = "<group>";
+		};
+		917CBB3D29EADDD90090F892 /* TCA */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TCA;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
