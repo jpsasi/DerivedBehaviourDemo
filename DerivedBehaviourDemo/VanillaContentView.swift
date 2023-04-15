@@ -8,19 +8,29 @@
 import SwiftUI
 
 struct VanillaContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+  @ObservedObject var viewModel: AppViewModel
+  var body: some View {
+    TabView {
+      NavigationView {
+        VanillaCounterView(viewModel: viewModel)
+      }
+      .tabItem {
+        Label("Counter", systemImage: "number.circle.fill")
+      }
+      NavigationView {
+        VanillaFavoritesView(viewModel: viewModel)
+      }
+      .tabItem {
+        Label("Favorites", systemImage: "star.circle.fill")
+      }
     }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        VanillaContentView()
+  static var previews: some View {
+    NavigationView {
+      VanillaContentView(viewModel: AppViewModel())
     }
+  }
 }
