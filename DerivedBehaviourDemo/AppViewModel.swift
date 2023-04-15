@@ -13,10 +13,15 @@ class AppViewModel: ObservableObject {
   let favorites: FavoritesViewModel
   var cancellables: Set<AnyCancellable> = []
   
-  init() {
-    self.counter = CounterViewModel()
-    self.favorites = FavoritesViewModel()
+  init(
+    counter: CounterViewModel = .init(),
+    favorites: FavoritesViewModel = .init()
+  ) {
+    self.counter = counter
+    self.favorites = favorites
     
+    var favoriteIsUpdating = false
+    var counterIsUpdating = false
     self.counter.objectWillChange
       .sink { [weak self] in self?.objectWillChange.send() }
       .store(in: &cancellables)
@@ -24,12 +29,21 @@ class AppViewModel: ObservableObject {
     self.favorites.objectWillChange
       .sink { [weak self] in self?.objectWillChange.send() }
       .store(in: &cancellables)
+
+    self.counter.$favorites.sink { [weak self] in
+      guard !counterIsUpdating else { return }
+      favoriteIsUpdating = true
+      defer { favoriteIsUpdating = false }
+      self?.favorites.favorites = $0
+    }
+    .store(in: &self.cancellables)
     
-    self.counter.$favorites
-      .removeDuplicates()
-      .assign(to: &self.favorites.$favorites)
-    self.favorites.$favorites
-      .removeDuplicates()
-      .assign(to: &self.counter.$favorites)
+    self.favorites.$favorites.sink { [weak self] in
+      guard !favoriteIsUpdating else { return }
+      counterIsUpdating = true
+      defer { counterIsUpdating = false }
+      self?.counter.favorites = $0
+    }
+    .store(in: &self.cancellables)    
   }
 }
