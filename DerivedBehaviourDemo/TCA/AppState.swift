@@ -10,40 +10,47 @@ import ComposableArchitecture
 
 struct AppState: ReducerProtocol {
   struct State: Equatable {
-    var counter: Int
+    var count: Int
     var favorites: Set<Int>
     
     init(counter: Int = 0, favorites: Set<Int> = []) {
-      self.counter = counter
+      self.count = counter
       self.favorites = favorites
+    }
+    
+    var counterState: Counter.State {
+      get {
+        .init(counter: count, favorites: favorites)
+      }
+      set {
+        self.count = newValue.counter
+        self.favorites = newValue.favorites
+      }
+    }
+    
+    var favoritesState: Favorites.State {
+      get {
+        .init(favorites: favorites)
+      }
+      set {
+        self.favorites = newValue.favorites
+      }
     }
   }
   
   enum Action {
-    case incrementTapped
-    case decrementTapped
-    case addToFavoritesTapped
-    case removeFromFavoritesTapped
-    case removeFromFavorites(Int)
+    case counter(Counter.Action)
+    case favorites(Favorites.Action)
   }
   
   func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
     switch action {
-      case .incrementTapped:
-        state.counter += 1
-        return .none
-      case .decrementTapped:
-        state.counter -= 1
-        return .none
-      case .addToFavoritesTapped:
-        state.favorites.insert(state.counter)
-        return .none
-      case .removeFromFavoritesTapped:
-        state.favorites.remove(state.counter)
-        return .none
-      case let .removeFromFavorites(number):
-        state.favorites.remove(number)
-        return .none
+      case let .counter(counterAction):
+        return Counter().reduce(into: &state.counterState, action: counterAction)
+          .map(AppState.Action.counter)
+      case let .favorites(favoritesAction):
+        return Favorites().reduce(into: &state.favoritesState, action: favoritesAction)
+          .map(AppState.Action.favorites)
     }
   }
 }

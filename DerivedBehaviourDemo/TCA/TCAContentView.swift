@@ -15,13 +15,13 @@ struct TCAContentView: View {
     WithViewStore(store) { viewStore in
       TabView {
         NavigationView {
-          TCACounterView(store: store)
+          TCACounterView(store: store.scope(state: \.counterState, action: AppState.Action.counter))
         }
         .tabItem {
-          Label("Counter \(viewStore.counter)", systemImage: "number.circle.fill")
+          Label("Counter \(viewStore.count)", systemImage: "number.circle.fill")
         }
         NavigationView {
-          TCAFavoritesView(store: store)
+          TCAFavoritesView(store: store.scope(state: \.favoritesState, action: AppState.Action.favorites))
         }
         .tabItem {
           Label("Favorites \(viewStore.favorites.count)", systemImage: "star.circle.fill")

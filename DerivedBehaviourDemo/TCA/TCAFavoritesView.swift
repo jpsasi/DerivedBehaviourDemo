@@ -8,8 +8,30 @@
 import SwiftUI
 import ComposableArchitecture
 
+struct Favorites: ReducerProtocol {
+
+  struct State: Equatable {
+    var favorites: Set<Int>
+    init(favorites: Set<Int> = []) {
+      self.favorites = favorites
+    }
+  }
+  
+  enum Action {
+    case removeFromFavorites(Int)
+  }
+  
+  func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+    switch action {
+      case let .removeFromFavorites(number):
+        state.favorites.remove(number)
+        return .none
+    }
+  }
+}
+
 struct TCAFavoritesView: View {
-  let store: StoreOf<AppState>
+  let store: StoreOf<Favorites>
   
   var body: some View {
     WithViewStore(store, observe:{ $0 }) { viewStore in
@@ -34,8 +56,8 @@ struct TCAFavoritesView: View {
 struct TCAFavoritesView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      TCAFavoritesView(store: Store(initialState: AppState.State(),
-                                    reducer: AppState()))
+      TCAFavoritesView(store: Store(initialState: Favorites.State(),
+                                    reducer: Favorites()))
     }
   }
 }

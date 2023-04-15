@@ -8,8 +8,44 @@
 import SwiftUI
 import ComposableArchitecture
 
+struct Counter: ReducerProtocol {
+  struct State:Equatable {
+    var counter: Int
+    var favorites: Set<Int>
+    
+    init(counter: Int = 0, favorites: Set<Int> = []) {
+      self.counter = counter
+      self.favorites = favorites
+    }
+  }
+  
+  enum Action {
+    case incrementTapped
+    case decrementTapped
+    case addToFavoritesTapped
+    case removeFromFavoritesTapped
+  }
+  
+  func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+    switch action {
+      case .incrementTapped:
+        state.counter += 1
+        return .none
+      case .decrementTapped:
+        state.counter -= 1
+        return .none
+      case .addToFavoritesTapped:
+        state.favorites.insert(state.counter)
+        return .none
+      case .removeFromFavoritesTapped:
+        state.favorites.remove(state.counter)
+        return .none
+    }
+  }
+}
+
 struct TCACounterView: View {
-  let store: StoreOf<AppState>
+  let store: StoreOf<Counter>
   
   var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
@@ -61,8 +97,8 @@ struct TCACounterView: View {
 struct TCACounterView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      TCACounterView(store: Store(initialState: AppState.State(),
-                                  reducer: AppState()._printChanges()))
+      TCACounterView(store: Store(initialState: Counter.State(),
+                                  reducer: Counter()))
     }
   }
 }
