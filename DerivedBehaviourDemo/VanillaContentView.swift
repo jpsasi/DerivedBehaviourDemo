@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct VanillaContentView: View {
+  
   @ObservedObject var viewModel: AppViewModel
+  
   var body: some View {
     TabView {
       NavigationView {
         VanillaCounterView(viewModel: viewModel)
       }
       .tabItem {
-        Label("Counter", systemImage: "number.circle.fill")
+        Label("Counter \(viewModel.counter)", systemImage: "number.circle.fill")
       }
       NavigationView {
         VanillaFavoritesView(viewModel: viewModel)
       }
       .tabItem {
-        Label("Favorites", systemImage: "star.circle.fill")
+        Label("Favorites \(viewModel.favorites.count)", systemImage: "star.circle.fill")
       }
     }
   }
