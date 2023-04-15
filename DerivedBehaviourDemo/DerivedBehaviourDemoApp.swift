@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct DerivedBehaviourDemoApp: App {
   var body: some Scene {
     WindowGroup {
-      let appViewModel = AppViewModel()
-      VanillaContentView(viewModel: appViewModel)
+      TCAContentView(store: Store(initialState: AppState.State(),
+                                  reducer: AppState()))
     }
   }
 }
