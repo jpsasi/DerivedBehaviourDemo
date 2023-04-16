@@ -173,9 +173,9 @@
 				917CBB4329EAE01C0090F892 /* TCAContentView.swift */,
 				917CBB4529EAE1490090F892 /* TCACounterView.swift */,
 				917CBB4729EAE1530090F892 /* TCAFavoritesView.swift */,
-				917CBB4B29EBA0950090F892 /* TCACounterFactView.swift */,
 				917CBB5029EBC6FF0090F892 /* TCACounterFactCollectionView.swift */,
 				917CBB4E29EBC09E0090F892 /* TCACounterRowFactView.swift */,
+				917CBB4B29EBA0950090F892 /* TCACounterFactView.swift */,
 			);
 			path = TCA;
 			sourceTree = "<group>";

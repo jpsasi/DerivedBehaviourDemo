@@ -35,7 +35,7 @@ struct CounterFact: ReducerProtocol {
     case decrButtonTapped
     case dismissAlert
     case factButtonTapped
-    case factResponse(Result<String, FactClient.Error>)
+    case factResponse(TaskResult<String>)
   }
   
   func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
@@ -50,15 +50,18 @@ struct CounterFact: ReducerProtocol {
         state.alert = nil
         return .none
       case .factButtonTapped:
-        return factClient.fetch(state.count)
-          .receive(on: mainQueue.animation())
-          .catchToEffect()
-          .map(CounterFact.Action.factResponse)
+        let count = state.count
+        return .task {
+          await .factResponse(
+            TaskResult {
+              try await factClient.fetch(count)
+            })
+        }
       case let .factResponse(.success(fact)):
         state.alert = .init(message: fact, title: "Fact")
         return .none
-      case .factResponse(.failure):
-        state.alert = .init(message: "Couldn't load fact", title: "Fact")
+      case let .factResponse(.failure(error)):
+        state.alert = .init(message: "Couldn't load fact \(error.localizedDescription)", title: "Fact")
         return .none
     }
   }
