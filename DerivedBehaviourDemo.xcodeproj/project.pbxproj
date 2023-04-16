@@ -22,6 +22,8 @@
 		917CBB4429EAE01C0090F892 /* TCAContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBB4329EAE01C0090F892 /* TCAContentView.swift */; };
 		917CBB4629EAE1490090F892 /* TCACounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBB4529EAE1490090F892 /* TCACounterView.swift */; };
 		917CBB4829EAE1530090F892 /* TCAFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBB4729EAE1530090F892 /* TCAFavoritesView.swift */; };
+		917CBB4A29EB9E3B0090F892 /* FactClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBB4929EB9E3B0090F892 /* FactClient.swift */; };
+		917CBB4C29EBA0950090F892 /* TCACounterFactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBB4B29EBA0950090F892 /* TCACounterFactView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,9 @@
 		917CBB4329EAE01C0090F892 /* TCAContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCAContentView.swift; sourceTree = "<group>"; };
 		917CBB4529EAE1490090F892 /* TCACounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCACounterView.swift; sourceTree = "<group>"; };
 		917CBB4729EAE1530090F892 /* TCAFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCAFavoritesView.swift; sourceTree = "<group>"; };
+		917CBB4929EB9E3B0090F892 /* FactClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactClient.swift; sourceTree = "<group>"; };
+		917CBB4B29EBA0950090F892 /* TCACounterFactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCACounterFactView.swift; sourceTree = "<group>"; };
+		917CBB4D29EBB82E0090F892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +115,9 @@
 		917CBB0B29EA72C10090F892 /* DerivedBehaviourDemo */ = {
 			isa = PBXGroup;
 			children = (
+				917CBB4D29EBB82E0090F892 /* Info.plist */,
 				917CBB0C29EA72C10090F892 /* DerivedBehaviourDemoApp.swift */,
+				917CBB4929EB9E3B0090F892 /* FactClient.swift */,
 				917CBB3D29EADDD90090F892 /* TCA */,
 				917CBB3C29EADDB90090F892 /* VanillaSwiftUI */,
 				917CBB1029EA72C20090F892 /* Assets.xcassets */,
@@ -162,6 +169,7 @@
 				917CBB4329EAE01C0090F892 /* TCAContentView.swift */,
 				917CBB4529EAE1490090F892 /* TCACounterView.swift */,
 				917CBB4729EAE1530090F892 /* TCAFavoritesView.swift */,
+				917CBB4B29EBA0950090F892 /* TCACounterFactView.swift */,
 			);
 			path = TCA;
 			sourceTree = "<group>";
@@ -304,11 +312,13 @@
 			files = (
 				917CBB3B29EAAD500090F892 /* AppViewModel.swift in Sources */,
 				917CBB0F29EA72C10090F892 /* VanillaContentView.swift in Sources */,
+				917CBB4A29EB9E3B0090F892 /* FactClient.swift in Sources */,
 				917CBB4629EAE1490090F892 /* TCACounterView.swift in Sources */,
 				917CBB0D29EA72C10090F892 /* DerivedBehaviourDemoApp.swift in Sources */,
 				917CBB3F29EADE5E0090F892 /* AppState.swift in Sources */,
 				917CBB4829EAE1530090F892 /* TCAFavoritesView.swift in Sources */,
 				917CBB3929EA73240090F892 /* VanillaFavoritesView.swift in Sources */,
+				917CBB4C29EBA0950090F892 /* TCACounterFactView.swift in Sources */,
 				917CBB3729EA73150090F892 /* VanillaCounterView.swift in Sources */,
 				917CBB4429EAE01C0090F892 /* TCAContentView.swift in Sources */,
 			);
@@ -397,7 +407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -451,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -472,6 +482,7 @@
 				DEVELOPMENT_TEAM = 2CTYYUNMY9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DerivedBehaviourDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -501,6 +512,7 @@
 				DEVELOPMENT_TEAM = 2CTYYUNMY9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DerivedBehaviourDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

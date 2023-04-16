@@ -26,6 +26,12 @@ struct TCAContentView: View {
         .tabItem {
           Label("Favorites \(viewStore.favorites.count)", systemImage: "star.circle.fill")
         }
+        NavigationView {
+          TCACounterFactView(store: store.scope(state: \.counterFact, action: AppState.Action.counterFact))
+        }
+        .tabItem {
+          Label("Counter Fact", systemImage: "number.square.fill")
+        }
       }
     }
   }

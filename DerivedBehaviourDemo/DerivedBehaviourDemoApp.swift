@@ -13,7 +13,7 @@ struct DerivedBehaviourDemoApp: App {
   var body: some Scene {
     WindowGroup {
       TCAContentView(store: Store(initialState: AppState.State(),
-                                  reducer: AppState()))
+                                  reducer: AppState()._printChanges()))
     }
   }
 }

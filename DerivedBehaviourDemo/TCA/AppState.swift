@@ -12,10 +12,13 @@ struct AppState: ReducerProtocol {
   struct State: Equatable {
     var count: Int
     var favorites: Set<Int>
+    var counterFact: CounterFact.State
     
-    init(counter: Int = 0, favorites: Set<Int> = []) {
+    init(counter: Int = 0, favorites: Set<Int> = [],
+         counterFact: CounterFact.State = CounterFact.State()) {
       self.count = counter
       self.favorites = favorites
+      self.counterFact = counterFact
     }
     
     var counterState: Counter.State {
@@ -41,6 +44,7 @@ struct AppState: ReducerProtocol {
   enum Action {
     case counter(Counter.Action)
     case favorites(Favorites.Action)
+    case counterFact(CounterFact.Action)
   }
   
   func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
@@ -51,6 +55,9 @@ struct AppState: ReducerProtocol {
       case let .favorites(favoritesAction):
         return Favorites().reduce(into: &state.favoritesState, action: favoritesAction)
           .map(AppState.Action.favorites)
+      case let .counterFact(counterFactAction):
+        return CounterFact().reduce(into: &state.counterFact, action: counterFactAction)
+          .map(AppState.Action.counterFact)
     }
   }
 }
