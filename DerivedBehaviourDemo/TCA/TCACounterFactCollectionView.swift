@@ -26,16 +26,21 @@ struct CounterFactCollection: ReducerProtocol {
     case counterRow(id: UUID, action: CounterRowFact.Action)
   }
   
-  func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
-    switch action {
-      case .addButtonTapped:
-        state.counters.append(.init())
-        return .none
-      case let .counterRow(id: id, action: .removeButtonTapped):
-        state.counters.remove(id: id)
-        return .none
-      case .counterRow:
-        return .none
+  var body: some ReducerProtocol<State, Action> {
+    Reduce { state, action in
+      switch action {
+        case .addButtonTapped:
+          state.counters.append(.init())
+          return .none
+        case let .counterRow(id: id, action: .removeButtonTapped):
+          state.counters.remove(id: id)
+          return .none
+        case .counterRow:
+          return .none
+      }
+    }
+    .forEach(\.counters, action: /Action.counterRow(id:action:)) {
+      CounterRowFact()
     }
   }
 }
