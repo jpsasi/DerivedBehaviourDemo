@@ -32,6 +32,12 @@ struct TCAContentView: View {
         .tabItem {
           Label("Counter Fact", systemImage: "number.square.fill")
         }
+        NavigationView {
+          TCACounterFactCollectionView(store: store.scope(state: \.counterFactCollection, action: AppState.Action.counterFactCollection))
+        }
+        .tabItem {
+          Label("Collection", systemImage: "rectangle.3.group.fill")
+        }
       }
     }
   }

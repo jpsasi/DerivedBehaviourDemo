@@ -24,6 +24,8 @@
 		917CBB4829EAE1530090F892 /* TCAFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBB4729EAE1530090F892 /* TCAFavoritesView.swift */; };
 		917CBB4A29EB9E3B0090F892 /* FactClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBB4929EB9E3B0090F892 /* FactClient.swift */; };
 		917CBB4C29EBA0950090F892 /* TCACounterFactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBB4B29EBA0950090F892 /* TCACounterFactView.swift */; };
+		917CBB4F29EBC09E0090F892 /* TCACounterRowFactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBB4E29EBC09E0090F892 /* TCACounterRowFactView.swift */; };
+		917CBB5129EBC6FF0090F892 /* TCACounterFactCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917CBB5029EBC6FF0090F892 /* TCACounterFactCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		917CBB4929EB9E3B0090F892 /* FactClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactClient.swift; sourceTree = "<group>"; };
 		917CBB4B29EBA0950090F892 /* TCACounterFactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCACounterFactView.swift; sourceTree = "<group>"; };
 		917CBB4D29EBB82E0090F892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		917CBB4E29EBC09E0090F892 /* TCACounterRowFactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCACounterRowFactView.swift; sourceTree = "<group>"; };
+		917CBB5029EBC6FF0090F892 /* TCACounterFactCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCACounterFactCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,8 @@
 				917CBB4529EAE1490090F892 /* TCACounterView.swift */,
 				917CBB4729EAE1530090F892 /* TCAFavoritesView.swift */,
 				917CBB4B29EBA0950090F892 /* TCACounterFactView.swift */,
+				917CBB5029EBC6FF0090F892 /* TCACounterFactCollectionView.swift */,
+				917CBB4E29EBC09E0090F892 /* TCACounterRowFactView.swift */,
 			);
 			path = TCA;
 			sourceTree = "<group>";
@@ -313,10 +319,12 @@
 				917CBB3B29EAAD500090F892 /* AppViewModel.swift in Sources */,
 				917CBB0F29EA72C10090F892 /* VanillaContentView.swift in Sources */,
 				917CBB4A29EB9E3B0090F892 /* FactClient.swift in Sources */,
+				917CBB4F29EBC09E0090F892 /* TCACounterRowFactView.swift in Sources */,
 				917CBB4629EAE1490090F892 /* TCACounterView.swift in Sources */,
 				917CBB0D29EA72C10090F892 /* DerivedBehaviourDemoApp.swift in Sources */,
 				917CBB3F29EADE5E0090F892 /* AppState.swift in Sources */,
 				917CBB4829EAE1530090F892 /* TCAFavoritesView.swift in Sources */,
+				917CBB5129EBC6FF0090F892 /* TCACounterFactCollectionView.swift in Sources */,
 				917CBB3929EA73240090F892 /* VanillaFavoritesView.swift in Sources */,
 				917CBB4C29EBA0950090F892 /* TCACounterFactView.swift in Sources */,
 				917CBB3729EA73150090F892 /* VanillaCounterView.swift in Sources */,

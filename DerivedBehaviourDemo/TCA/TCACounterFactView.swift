@@ -77,6 +77,7 @@ struct TCACounterFactView: View {
             Text("-")
               .font(.title)
           }
+          .buttonStyle(PlainButtonStyle())
           Text("\(viewStore.count)")
             .font(.title3)
           Button {
@@ -85,11 +86,13 @@ struct TCACounterFactView: View {
             Text("+")
               .font(.title)
           }
+          .buttonStyle(PlainButtonStyle())
         }
         .padding(.horizontal)
         Button("Fact") {
           viewStore.send(.factButtonTapped)
         }
+        .buttonStyle(PlainButtonStyle())
       }
       .alert(item: viewStore.binding(get: \.alert, send: .dismissAlert)) { alert in
         Alert(title: Text(alert.title), message: Text(alert.message))

@@ -13,12 +13,15 @@ struct AppState: ReducerProtocol {
     var count: Int
     var favorites: Set<Int>
     var counterFact: CounterFact.State
+    var counterFactCollection: CounterFactCollection.State
     
     init(counter: Int = 0, favorites: Set<Int> = [],
-         counterFact: CounterFact.State = CounterFact.State()) {
+         counterFact: CounterFact.State = CounterFact.State(),
+         counterFactCollection: CounterFactCollection.State = CounterFactCollection.State()) {
       self.count = counter
       self.favorites = favorites
       self.counterFact = counterFact
+      self.counterFactCollection = counterFactCollection
     }
     
     var counterState: Counter.State {
@@ -45,6 +48,7 @@ struct AppState: ReducerProtocol {
     case counter(Counter.Action)
     case favorites(Favorites.Action)
     case counterFact(CounterFact.Action)
+    case counterFactCollection(CounterFactCollection.Action)
   }
   
   func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
@@ -58,6 +62,9 @@ struct AppState: ReducerProtocol {
       case let .counterFact(counterFactAction):
         return CounterFact().reduce(into: &state.counterFact, action: counterFactAction)
           .map(AppState.Action.counterFact)
+      case let .counterFactCollection(counterFactCollection):
+        return CounterFactCollection().reduce(into: &state.counterFactCollection, action: counterFactCollection)
+          .map(AppState.Action.counterFactCollection)
     }
   }
 }
